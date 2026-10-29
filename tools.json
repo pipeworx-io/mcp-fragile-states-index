@@ -1,0 +1,39 @@
+[
+  {
+    "name": "fsi_country_score",
+    "description": "Fragile States Index score and rank for ONE country — a country-fragility risk measure (12 cohesion/economic/political/social indicators rolled into one 0-120 score; higher = more fragile). Published annually by The Fund for Peace. PREFER for \"how fragile is <country>\", \"<country> fragile states index\", \"state fragility risk for <country>\", or as background context on a country before/alongside news-event data (complements gdelt). Pass a country name (e.g. \"Somalia\", \"Brazil\", \"United States\" — common aliases like \"USA\"/\"DRC\"/\"Ivory Coast\" are accepted).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "Country name (e.g. \"Yemen\", \"Germany\", \"USA\")."
+        }
+      },
+      "required": [
+        "country"
+      ]
+    }
+  },
+  {
+    "name": "fsi_ranking",
+    "description": "Rank countries by Fragile States Index score — the N most fragile or N most stable countries in one call, with rank and score. PREFER for \"most fragile countries\", \"most stable/least fragile countries\", \"top 10 failed states\", \"which countries are at highest state-fragility risk\". direction defaults to \"most_fragile\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "How many countries to return (default 10, max 50)."
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "most_fragile",
+            "most_stable"
+          ],
+          "description": "Which end of the ranking to return. Default \"most_fragile\"."
+        }
+      }
+    }
+  }
+]
